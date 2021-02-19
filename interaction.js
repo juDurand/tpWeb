@@ -12,29 +12,32 @@ function DnD(canvas, interactor) {
 
 	// Developper les 3 fonctions gérant les événements
 
-  this.pression = function (evt) {
+  DnD.prototype.pression = function (evt) {
     evt = getMousePosition(canvas, evt);
     this.xi = evt.x;
     this.yi = evt.y;
     this.mouseDown = true;
+    interactor.onInteractionStart(this);
     console.log("click :", this.xi," ",this.yi);
   };
 
-  this.deplacement = function(evt) {
+  DnD.prototype.deplacement = function(evt) {
     evt = getMousePosition(canvas, evt);
     if (this.mouseDown) {
       this.xf = evt.x;
       this.yf = evt.y;
+      interactor.onInteractionUpdate(this);
       console.log("drag :", this.xf," ",this.yf)
     };
   };
 
-  this.relachement = function (evt) {
+  DnD.prototype.relachement = function (evt) {
     evt = getMousePosition(canvas, evt);
     if (this.mouseDown) {
       this.xf = evt.x;
       this.yf = evt.y;
       this.mouseDown = false;
+      interactor.onInteractionEnd(this);
       console.log("drop :", this.xf," ",this.yf)
     };
   };
@@ -59,6 +62,3 @@ function getMousePosition(canvas, evt) {
     y: evt.clientY - rect.top
   };
 };
-
-
-
