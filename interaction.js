@@ -18,7 +18,7 @@ function DnD(canvas, interactor) {
     this.yi = evt.y;
     this.mouseDown = true;
     interactor.onInteractionStart(this);
-    console.log("click :", this.xi," ",this.yi);
+    //console.log("click :", this.xi," ",this.yi);
   };
 
   DnD.prototype.deplacement = function(evt) {
@@ -27,7 +27,7 @@ function DnD(canvas, interactor) {
       this.xf = evt.x;
       this.yf = evt.y;
       interactor.onInteractionUpdate(this);
-      console.log("drag :", this.xf," ",this.yf)
+      //console.log("drag :", this.xf," ",this.yf)
     };
   };
 
@@ -38,7 +38,7 @@ function DnD(canvas, interactor) {
       this.yf = evt.y;
       this.mouseDown = false;
       interactor.onInteractionEnd(this);
-      console.log("drop :", this.xf," ",this.yf)
+      //console.log("drop :", this.xf," ",this.yf)
     };
   };
 
